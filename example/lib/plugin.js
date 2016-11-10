@@ -20,7 +20,22 @@ export const App = create('app', {
   },
 })
 
-const Ambi = create('ambi', { show: msg => { alert(msg) } })
+const Ambi = create('ambi', {
+  prepare() {
+    if (this.css) {
+      if (typeof this.css === 'string') this.css = [this.css]
+      this.css.forEach(url => {
+        const head = document.getElementsByTagName('head')[0]
+        const link = document.createElement('link')
+        link.setAttribute('rel', 'stylesheet')
+        link.setAttribute('type', 'text/css')
+        link.setAttribute('href', url)
+        head.appendChild(link)
+      })
+    }
+  },
+  show(msg) { alert(msg) },
+})
 
 export const ambi = (name, proto) => {
   create(name, proto, null, Ambi)

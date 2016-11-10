@@ -2,7 +2,10 @@ import inherit from './lib/inherit'
 import { get, set } from './lib/cache'
 import { transform, print, createElement, resolve as re } from './lib/manipulate'
 
-function Seed() {}
+function Seed() {
+  // prepare some context
+  if (this.prepare) this.prepare()
+}
 // state, props, children
 Seed.prototype.render = function render(state, props, children) {
   return this.tpl(state, props, children)
