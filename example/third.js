@@ -19,6 +19,7 @@ resolve({
     return Third
   },
 })
+// name, prototype, staticProps
 create('3-list', { init: init }) // eslint-disable-line
 
 render(container, create('app', {

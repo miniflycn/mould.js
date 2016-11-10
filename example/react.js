@@ -6,6 +6,7 @@ resolve({
   match: (Origin) => { return !!Origin.__react__ }, // eslint-disable-line
   transform: (Origin) => Origin.__react__, // eslint-disable-line
 })
+// name, prototype, staticProps
 create('react-list', null, { __react__: ReactList })
 
 render(container, create('app', {

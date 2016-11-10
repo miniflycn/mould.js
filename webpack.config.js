@@ -17,6 +17,7 @@ module.exports = {
     default: './example/default',
     third: './example/third',
     plugin: './example/plugin',
+    flux: './example/flux',
   },
   output: {
     path: 'dist',
