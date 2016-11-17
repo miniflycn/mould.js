@@ -108,6 +108,7 @@ const transform = (Origin) => {
       getInitialState() { return origin.state || {} },
       render: function render() {
         const dom = origin.render(this.state, this.props, this.children);
+        origin.element = this; // mark element
         return React.isValidElement(dom) ? dom : trans(dom)
       },
     };
