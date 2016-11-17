@@ -107,8 +107,8 @@ const transform = (Origin) => {
     param = {
       getInitialState() { return origin.state || {} },
       render: function render() {
-        const dom = origin.render(this.state, this.props, this.children);
         origin.element = this; // mark element
+        const dom = origin.render(this.state, this.props, this.children);
         return React.isValidElement(dom) ? dom : trans(dom)
       },
     };
