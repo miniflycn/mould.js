@@ -1,6 +1,6 @@
 {
   "name": "mould.js",
-  "version": "0.0.3",
+  "version": "0.0.4",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -27,6 +27,9 @@
     "should": "^11.1.1",
     "webpack": "^1.13.3"
   },
+  "files": [
+    "index.js"
+  ],
   "peerDependencies": {
     "react-dom": "^15.3.2",
     "react": "^15.3.2"

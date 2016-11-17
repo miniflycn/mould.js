@@ -105,8 +105,10 @@ const transform = (Origin) => {
   } else {
     const origin = new Origin;
     param = {
-      getInitialState: function getInitialState() { return origin.state || {} },
+      getInitialState() { return origin.state || {} },
       render: function render() {
+        // 如果发现 arguments 参数少于2个，则判定为 jsx 模板
+        if (origin.render.length < 2) return origin.render.call(this, this.props)
         const dom = origin.render(this.state, this.props, this.children);
         return trans(dom)
       },
