@@ -99,21 +99,19 @@ function trans(ele) {
 const transform = (Origin) => {
   const fn = solve('transform', Origin);
   let res;
-  let param;
   if (fn) {
     res = fn(Origin);
   } else {
-    const origin = new Origin;
-    param = {
-      getInitialState() { return origin.state || {} },
+    const param = {
+      getInitialState() { return Origin.state || {} },
       render: function render() {
-        origin.element = this; // mark element
+        const origin = this.origin || new Origin(this);
         const dom = origin.render(this.state, this.props, this.children);
         return React.isValidElement(dom) ? dom : trans(dom)
       },
     };
+    res = React.createClass(param);
   }
-  if (param) res = React.createClass(param);
   res.__Origin__ = Origin; // eslint-disable-line
   return res
 };
@@ -130,7 +128,9 @@ const resolve$1 = (config) => {
   resolves.push(config);
 };
 
-function Seed() {
+function Seed(element) {
+  this.element = element;
+  element.origin = this; // eslint-disable-line
   // prepare some context
   if (this.prepare) this.prepare();
 }
