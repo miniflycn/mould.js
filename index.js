@@ -117,6 +117,7 @@ var createElement = function createElement(Element, props) {
  * }
  */
 function trans(ele) {
+  if (ele == null) return null;
   if (ele.tagname === 'text') return ele.content;
   var children = ele.children;
   var props = Object.assign({}, ele.props, ele.key != null ? { key: ele.key } : null);
