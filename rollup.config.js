@@ -5,10 +5,10 @@ module.exports = {
   entry: './lib/index.js',
   dest: './index.js',
   format: 'cjs',
-  external: ['react', 'react-dom'],
+  external: ['react', 'react-dom', 'xtend'],
   plugins: [
     nodeResolve({
-      skip: ['react', 'react-dom'],
+      skip: ['react', 'react-dom', 'xtend'],
     }),
     babel({
       exclude: 'node_modules/**',

@@ -1,6 +1,6 @@
 {
   "name": "mould.js",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -34,5 +34,8 @@
   "peerDependencies": {
     "react-dom": "^15.3.2",
     "react": "^15.3.2"
+  },
+  "dependencies": {
+    "xtend": "^4.0.1"
   }
 }

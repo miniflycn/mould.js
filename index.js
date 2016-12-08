@@ -6,6 +6,7 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 
 var React = _interopDefault(require('react'));
 var ReactDom = _interopDefault(require('react-dom'));
+var extend = _interopDefault(require('xtend/mutable'));
 
 var inherit = (function (a, b) {
   function Fn() {}
@@ -120,7 +121,7 @@ function trans(ele) {
   if (ele == null) return null;
   if (ele.tagname === 'text') return ele.content;
   var children = ele.children;
-  var props = Object.assign({}, ele.props, ele.key != null ? { key: ele.key } : null);
+  var props = extend({}, ele.props, ele.key != null ? { key: ele.key } : null);
   var args = [get$1(ele.tagname) || ele.tagname, props];
   if (children && children.length) {
     args.push.apply(args, children.map(function (childEle) {
@@ -218,7 +219,7 @@ var create = function create(name, prototype, staticProps, Super) {
     }).join('');
     var Origin = new Function('Super', 'return function ' + constructorName + '() {\n  Super.call(this)\n}')(Super);
     inherit(Origin, Super);
-    Object.assign(Origin, Super, staticProps);
+    extend(Origin, Super, staticProps);
     if (prototype) Object.assign(Origin.prototype, prototype);
     // mark name
     Origin.__name__ = name;
