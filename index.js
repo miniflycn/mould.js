@@ -150,11 +150,13 @@ var transform = function transform(Origin) {
         render: function render() {
           // run init
           if (origin.element !== this) origin.init(this);
-          var dom = origin.render(this.state, this.props, this.children);
+          var dom = origin.render.call(this);
           return React.isValidElement(dom) ? dom : trans(dom);
         }
       };
-      if (origin.bindEvent) param.componentDidMount = origin.bindEvent.bind(origin);
+      // extend handles
+      extend(param, origin.handles);
+      if (origin.bindEvent) param.componentDidMount = origin.bindEvent;
       if (origin.aop && origin.aop['after:bindEvent'] && !param.componentDidMount) {
         param.componentDidMount = function bindEvent() {};
       }
