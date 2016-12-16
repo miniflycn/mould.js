@@ -222,7 +222,7 @@ var create = function create(name, prototype, staticProps, Super) {
     var Origin = new Function('Super', 'return function ' + constructorName + '() {\n  Super.call(this)\n}')(Super);
     inherit(Origin, Super);
     extend(Origin, Super, staticProps);
-    if (prototype) Object.assign(Origin.prototype, prototype);
+    if (prototype) extend(Origin.prototype, prototype);
     // mark name
     Origin.__name__ = name;
     /* eslint-enable */
